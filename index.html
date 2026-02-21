@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nika Abashidze — Sound & Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Nika Abashidze</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#portfolio" onclick="closeMobile()">Work</a>
+  <a href="#music" onclick="closeMobile()">Music</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <p class="hero-label">Sound Designer · Composer · Classical Guitarist</p>
+  <h1>Nika <span class="light">Abashidze</span></h1>
+  <p class="hero-sub">Audio post-production for animations & games. Music composition. 11+ years of classical guitar.</p>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ ABOUT ═══ -->
+<div id="about">
+  <div class="section">
+    <p class="section-label reveal">01 — About</p>
+    <h2 class="reveal reveal-delay-1">Crafting sound <span class="light">with intention</span></h2>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-2">
+        <p>I'm a <strong>19-year-old sound enthusiast</strong> from Georgia, exploring the intersection of Sound Design in animations and games, music composition, and classical performance.</p>
+        <p>My work spans synchronized sound design for animations and games, original compositions blending electronic and orchestral elements, and live classical guitar performances rooted in 11+ years of dedicated practice.</p>
+        <p>Currently a member of <strong>KIU Capella</strong> choir and always open to new collaborations.</p>
+      </div>
+      <div class="about-stats reveal reveal-delay-3">
+        <div class="stat">
+          <span class="stat-num">11+</span>
+          <span class="stat-label">Years of Classical Guitar</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Sound Design For Games and Animations</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2025</span>
+          <span class="stat-label">Hackathon Winner</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Passion for Sound</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<div id="portfolio">
+  <div class="section">
+    <p class="section-label reveal">02 — Work</p>
+    <h2 class="reveal reveal-delay-1">Selected <span class="light">projects</span></h2>
+
+    <div class="filter-row reveal reveal-delay-2">
+      <button class="filter-btn active" onclick="filterCards('all',this)">All</button>
+      <button class="filter-btn" onclick="filterCards('animation',this)">Animations</button>
+      <button class="filter-btn" onclick="filterCards('game',this)">Game Audio</button>
+      <button class="filter-btn" onclick="filterCards('guitar',this)">Guitar</button>
+    </div>
+
+    <div class="grid reveal reveal-delay-3">
+
+      <div class="card" data-category="animation" onclick="openModal('animation1')">
+        <!-- Add thumbnail: replace the div below with <img class="card-thumb" src="images/your-photo.jpg" alt=""> -->
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Animation</span>
+          <div class="card-title">Audio Post Production #1</div>
+          <div class="card-desc">Music · Sound Design · Mixing</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="animation" onclick="openModal('animation2')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Animation</span>
+          <div class="card-title">Audio Post Production #2</div>
+          <div class="card-desc">Short Animation · Sound Design</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="animation" onclick="openModal('animation3')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Animation</span>
+          <div class="card-title">Dumbots — Jump Shoes</div>
+          <div class="card-desc">Synced movement sounds</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="game" onclick="openModal('game1')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h2"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Game Audio</span>
+          <div class="card-title">LIFE — GDG Hackathon Winner</div>
+          <div class="card-desc">Educational Game · Audio Direction</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="game" onclick="openModal('game2')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h2"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Game Audio</span>
+          <div class="card-title">Global Game Jam 2026</div>
+          <div class="card-desc">The Goat Ate The Vineyard · UE5</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="game" onclick="openModal('game3')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h2"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Game Audio</span>
+          <div class="card-title">TSU Game Jam 2025</div>
+          <div class="card-desc">Bend It All · DevTherapy Hackathon</div>
+        </div>
+      </div>
+      
+      <div class="card" data-category="guitar" onclick="openModal('guitar1')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><circle cx="12" cy="16" r="4"/><path d="M12 12V4M9 7h6"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Guitar</span>
+          <div class="card-title">Tango En Skai — Roland Dyens</div>
+          <div class="card-desc">Live solo guitar concert</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="guitar" onclick="openModal('guitar2')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><circle cx="12" cy="16" r="4"/><path d="M12 12V4M9 7h6"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Guitar</span>
+          <div class="card-title">S.L. Weiss — Fantasie</div>
+          <div class="card-desc">Classical repertoire</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="guitar" onclick="openModal('guitar3')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><circle cx="12" cy="16" r="4"/><path d="M12 12V4M9 7h6"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Guitar</span>
+          <div class="card-title">Isaac Albéniz — Leyenda</div>
+          <div class="card-desc">Solo Guitar Concert</div>
+        </div>
+      </div>
+
+      <div class="card" data-category="guitar" onclick="openModal('guitar4')">
+        <div class="card-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><circle cx="12" cy="16" r="4"/><path d="M12 12V4M9 7h6"/></svg>
+        </div>
+        <div class="card-overlay">
+          <span class="card-category">Guitar</span>
+          <div class="card-title">Villa-Lobos — Prelude No.5</div>
+          <div class="card-desc">Practice Session</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal" onclick="handleModalBg(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">✕ Close</button>
+    <div class="modal-video" id="modalVideoContainer"></div>
+    <div class="modal-info">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ MUSIC ═══ -->
+<div id="music">
+  <div class="section">
+    <p class="section-label reveal">03 — Music</p>
+    <h2 class="reveal reveal-delay-1">Original <span class="light">compositions</span></h2>
+
+    <div class="music-list reveal reveal-delay-2">
+
+      <div class="music-list reveal reveal-delay-2" id="trackList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MINI PLAYER -->
+<div class="mini-player" id="miniPlayer">
+  <div class="mini-track-info">
+    <div class="mini-track-name-text" id="miniName">—</div>
+    <div class="mini-track-meta-text" id="miniMeta">—</div>
+  </div>
+  <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  
+  <button class="mini-btn" onclick="closePlayer()" title="Close">
+  <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+<div class="mini-controls">
+    <button class="mini-btn" onclick="prevTrack()">
+      <svg viewBox="0 0 24 24"><polygon points="19,20 9,12 19,4"/><rect x="5" y="4" width="2" height="16"/></svg>
+    </button>
+    <button class="mini-btn" onclick="togglePlay()">
+      <svg viewBox="0 0 24 24" id="playPauseIcon"><polygon points="5,3 19,12 5,21"/></svg>
+    </button>
+    <button class="mini-btn" onclick="nextTrack()">
+      <svg viewBox="0 0 24 24"><polygon points="5,4 15,12 5,20"/><rect x="17" y="4" width="2" height="16"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<div id="contact">
+  <div class="section">
+    <p class="section-label reveal">04 — Contact</p>
+    <h2 class="reveal reveal-delay-1">Let's work <span class="light">together</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-delay-2">
+        <p>Have a project that needs sound design, music composition, or audio post-production? I'd love to hear about it.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Email</div>
+          <a href="mailto:n.abashidze25@gmail.com">n.abashidze25@gmail.com</a>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Phone</div>
+          <a href="tel:+995568481313">+995 568 481 313</a>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Location</div>
+          <a>Kutaisi / Tbilisi, Georgia</a>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-3">
+        <form action="https://formspree.io/f/xdalwayj" method="POST">
+          <div class="form-field"><input type="text" name="name" placeholder="Your name" required /></div>
+          <div class="form-field"><input type="email" name="email" placeholder="Your email" required /></div>
+          <div class="form-field"><textarea name="message" placeholder="Tell me about your project..."></textarea></div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Nika Abashidze</p>
+  <p>Sound Designer · Composer · Guitarist</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
