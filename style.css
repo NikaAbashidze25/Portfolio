@@ -316,6 +316,24 @@ h2 .light { font-weight: 200; color: var(--accent); }
   color: var(--muted);
   margin-top: 8px;
 }
+
+.cv-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 20px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s;
+}
+
+.cv-btn:hover {
+  background: var(--accent);
+  color: #1a1a1a;
+}
 /* ── PORTFOLIO ── */
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
 .filter-btn {
