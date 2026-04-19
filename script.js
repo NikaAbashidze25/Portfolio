@@ -43,16 +43,16 @@ function filterCards(cat, btn) {
 // ── VIDEO MODAL ──────────────────────────────
 // ↓ Paste your YouTube links in the video: '' fields below ↓
 const modalData = {
-  animation1: { title: 'Audio Post Production #1 — Animation',        desc: 'Music · Sound Design · Audio Mixing',                                         video: 'https://www.youtube.com/watch?v=kW0Paxotqyo' , thumb: ''},
-  animation2: { title: 'Audio Post Production #2 — Short Animation',   desc: 'Sound design synchronized with visuals.',                                    video: 'https://www.youtube.com/shorts/wjtb69nZfTM',   thumb: 'public/images/Bird.png' },
-  animation3: { title: 'Dumbots — Jump Shoes',                         desc: 'Focused on synced movement sounds.',                                          video: 'https://www.youtube.com/watch?v=BHmFQ96LtMY', thumb: '' },
-  game1:      { title: 'LIFE — GDG Kutaisi Hackathon 2025 (Winner Project)',            desc: 'Educational Game — "Learning Is For Everyone". UE5 | Audio direction | composition.', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
-  game2:      { title: 'Global Game Jam 2026 ',                         desc: 'Game on theme "Mask" — "The Goat Ate The vineyard". UE5 | Sound Design |Game Music ',     video: 'https://youtu.be/FeM80mWhXqs',      thumb: 'public/images/GoatAteVineyard.png' },
-  game3:      { title: 'TSU Game Jam 2025',                              desc: 'DevTherapy Hackathon 2025 (TSU) Game Audio - "Bend It All" ',                                 video: 'https://youtu.be/oQKzQA1KKy0', thumb: 'public/images/TSU_GameJam.png' },
-  guitar1:    { title: 'Tango En Skai — Roland Dyens',                 desc: 'Live performance at solo guitar concert, Komarovi Campus School.',            video: 'https://www.youtube.com/watch?v=7lk_tFkkTT8', thumb: 'public/images/Tango.jpg' },
-  guitar2:    { title: 'S.L. Weiss — Fantasie',                        desc: 'From my classical guitar repertoire.',                                        video: 'https://www.youtube.com/watch?v=kU4sPPl3LBw', thumb: 'public/images/Weiss.jpg' },
-  guitar3:    { title: 'Isaac Albéniz — Leyenda',                      desc: 'Solo Guitar Concert at Komarovi Campus School.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
-  guitar4:    { title: 'Villa-Lobos — Prelude No.5',                   desc: 'Practice Session recording.',                                                 video: 'https://www.youtube.com/shorts/Kz5SFcbbPcs', thumb: 'public/images/GuitarPoster.jpg' },
+  animation1: { title: 'Audio Post Production #1 - Animation',        desc: 'Sound Design · Original Music · Mixing',                                         video: 'https://www.youtube.com/watch?v=kW0Paxotqyo' , thumb: ''},
+  animation2: { title: 'Dumbots - Jump Shoes',                         desc: 'Focused only on Sound Design/Foley to synchronize movement sounds.',                                          video: 'https://www.youtube.com/watch?v=BHmFQ96LtMY', thumb: '' },
+  animation3: { title: 'Audio Post Production #2 - Short Animation',   desc: 'Sound design · Original Music',                                    video: 'https://www.youtube.com/shorts/wjtb69nZfTM',   thumb: 'public/images/Bird.png', volume: 50 },
+  animation4: { title: 'Lego Animation - Personal Project', desc: 'Focused on Sound design (planning to do the rescore of Star Wars music in the future)', video: 'public/videos/LevanAnimation3.mp4', thumb: 'public/images/LevanAnimation3V1.png' },
+  game1:      { title: 'LIFE - GDG Kutaisi Hackathon 2025 (Winner Project)',            desc: 'Educational Game - "Learning Is For Everyone". UE5 | Sound Design | Video Editing | Original Music (Note: Original Music was written for the Game, Music in the video was not composed by me).', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
+  game2:      { title: 'Global Game Jam 2026 ',                         desc: 'Game on theme "Mask" - "The Goat Ate The vineyard". UE5 | Sound Design | Original Music ',     video: 'https://youtu.be/FeM80mWhXqs',      thumb: 'public/images/GoatAteVineyard.png' },
+  guitar1:    { title: 'Tango En Skai - Roland Dyens',                 desc: 'Live performance at Komarovi Campus School - solo guitar concert.',            video: 'https://www.youtube.com/watch?v=7lk_tFkkTT8', thumb: 'public/images/Tango.jpg' },
+  guitar2:    { title: 'S.L. Weiss - Fantasie',                        desc: 'Practice Session recording',                                        video: 'https://www.youtube.com/watch?v=kU4sPPl3LBw', thumb: 'public/images/Weiss.jpg' },
+  guitar3:    { title: 'Isaac Albéniz - Leyenda',                      desc: 'Live performance at Komarovi Campus School - solo guitar concert.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
+  guitar4:    { title: 'Villa-Lobos - Prelude No.5',                   desc: 'Practice Session recording.',                                                 video: 'https://www.youtube.com/shorts/Kz5SFcbbPcs', thumb: 'public/images/GuitarPoster.jpg' },
 };
 
 // Helper: extract YouTube video ID from any YouTube URL
@@ -76,22 +76,35 @@ function openModal(id) {
   if (!d) return;
 
   document.getElementById('modalTitle').textContent = d.title;
-  document.getElementById('modalDesc').textContent = d.desc;
-
+  document.getElementById('modalDesc').innerHTML = d.desc;
   const c = document.getElementById('modalVideoContainer');
   if (d.video) {
     const ytId = getYouTubeId(d.video);
     if (ytId) {
-      // Use youtube-nocookie.com to bypass most embed restrictions
+
       c.innerHTML = `<iframe
-        src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1"
+        id="ytPlayer"
+        src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1"
         allowfullscreen
         allow="autoplay; encrypted-media; picture-in-picture"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>`;
+
+      if (d.volume !== undefined) {
+        setTimeout(() => {
+          const iframe = document.getElementById('ytPlayer');
+          if (iframe) {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({ event: 'command', func: 'setVolume', args: [d.volume] }),
+              '*'
+            );
+          }
+        }, 2000);
+      }
+
     } else {
       // Local video file
-      c.innerHTML = `<video src="${d.video}" controls autoplay></video>`;
+      c.innerHTML = `<video src="${d.video}" controls autoplay style="width:100%;height:100%;display:block;"></video>`;
     }
   } else {
     c.innerHTML = `<div class="modal-placeholder">No video added yet — paste your YouTube link in modalData inside script.js</div>`;
@@ -152,12 +165,12 @@ document.addEventListener('keydown', e => {
 // ── AUDIO PLAYER ─────────────────────────────
 // ↓ Add your MP3 file paths in the src: '' fields below ↓
 const tracks = [
+  { name: 'Game Music | Peaceful | Adventure | Exploring  ',                             meta: '',              src: 'public/audio/NewPlugins4.wav' },
+  { name: 'Game Music | Adventure | Georgian Folk | Jazzy  ',    meta: 'Original Music for Game "Goat Ate The Vineyard"',                  src: 'public/audio/GoatAteVineyard.mp3' },
   { name: 'Electronic | Orchestral | Tron Feel',               meta: '',              src: 'public/audio/Tron Alike Portfolio.mp3' },
-  { name: 'Adventure | Georgian Folk | Jazzy | Game Music',    meta: 'Original Music for Game "Goat Ate The Vineyard"',                  src: 'public/audio/GoatAteVineyard.mp3' },
-  { name: 'Electronic | Action | Motivational',                meta: 'Electro sliding Bass',              src: 'public/audio/ElectroBass.mp3' },
-  { name: 'Orchestral | Cinematic | Combat',                      meta: '',              src: 'public/audio/OrchestralTest.mp3' },
-  { name: 'Drums | Synth | Cellos ',                 meta: '',              src: 'public/audio/Drums(Electro).mp3' },
-  { name: 'Your Track Title Here',                             meta: '',              src: '' },
+  { name: 'Orchestral | Cinematic | Combat',                      meta: '',              src: 'public/audio/OrchestralTest_V1.wav' },
+  { name: 'Electronic  | Action | Motivational',                meta: 'Electro sliding Bass',              src: 'public/audio/ElectroBass_V1.wav' },
+  { name: 'Synth | Drums | Cellos ',                 meta: '',              src: 'public/audio/Drums(Electro).mp3' },
 ];
 
 let currentTrack = -1;

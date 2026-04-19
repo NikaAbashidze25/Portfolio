@@ -358,12 +358,16 @@ h2 .light { font-weight: 200; color: var(--accent); }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3px;
+  width: 100%;
+  margin: 0 auto;
 }
 .card {
   position: relative;
   background: var(--surface);
   overflow: hidden;
   aspect-ratio: 16/10;
+  width: 100%;
+  height: auto;
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
@@ -616,15 +620,35 @@ footer p { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
     padding: 8px 14px;
   }
 
-  .grid { grid-template-columns: 1fr; gap: 16px; }
-  .card { height: 220px; }
+    .grid { 
+    grid-template-columns: 1fr; 
+    gap: 16px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-  .mini-player { padding: 12px 20px; }
+    .card { 
+    width: 100%;
+    aspect-ratio: 16/10;
+    height: auto;
+  }
+
+  .mini-player { 
+    padding: 12px 20px;
+   }
+
   .progress-bar { display: none; }
-  footer { flex-direction: column; gap: 10px; text-align: center; }
+  footer { flex-direction: column;
+     gap: 10px; text-align: center; }
 }
 
 @media (max-width: 960px) and (min-width: 769px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
   .filter-row { justify-content: center; }
+}
+@media (min-width: 961px) and (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1100px) and (min-width: 769px) {
+  .grid { grid-template-columns: repeat(2, 1fr); width: 100%; }
 }
