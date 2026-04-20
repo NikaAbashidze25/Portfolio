@@ -82,25 +82,34 @@ function openModal(id) {
     const ytId = getYouTubeId(d.video);
     if (ytId) {
 
-      c.innerHTML = `<iframe
-        id="ytPlayer"
-        src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1"
-        allowfullscreen
-        allow="autoplay; encrypted-media; picture-in-picture"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>`;
+        // Start muted if a custom volume is set, to avoid the loud→quiet drop
+    const startMuted = d.volume !== undefined ? '&mute=1' : '';
 
-      if (d.volume !== undefined) {
-        setTimeout(() => {
-          const iframe = document.getElementById('ytPlayer');
-          if (iframe) {
-            iframe.contentWindow.postMessage(
-              JSON.stringify({ event: 'command', func: 'setVolume', args: [d.volume] }),
-              '*'
-            );
-          }
-        }, 2000);
-      }
+    c.innerHTML = `<iframe
+      id="ytPlayer"
+      src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1${startMuted}"
+      allowfullscreen
+      allow="autoplay; encrypted-media; picture-in-picture"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>`;
+
+    if (d.volume !== undefined) {
+      const targetVolume = d.volume;
+      const trySetVolume = (attempts = 0) => {
+        const iframe = document.getElementById('ytPlayer');
+        if (!iframe) return;
+        // Unmute first, then set volume
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*'
+        );
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: 'setVolume', args: [targetVolume] }), '*'
+        );
+        // Retry a couple of times to make sure it sticks
+        if (attempts < 3) setTimeout(() => trySetVolume(attempts + 1), 800);
+      };
+      setTimeout(() => trySetVolume(), 1000);
+    }
 
     } else {
       // Local video file
