@@ -50,8 +50,8 @@ const modalData = {
   game1:      { title: 'LIFE - GDG Kutaisi Hackathon 2025 (Winner Project)',            desc: 'Educational Game - "Learning Is For Everyone". UE5 | Sound Design | Video Editing | Original Music (Note: Original Music was written for the Game, Music in the video was not composed by me).', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
   game2:      { title: 'Global Game Jam 2026 ',                         desc: 'Game on theme "Mask" - "The Goat Ate The vineyard". UE5 | Sound Design | Original Music ',     video: 'https://youtu.be/FeM80mWhXqs',      thumb: 'public/images/GoatAteVineyard.png' },
   guitar1:    { title: 'Tango En Skai - Roland Dyens',                 desc: 'Live performance at Komarovi Campus School - solo guitar concert.',            video: 'https://www.youtube.com/watch?v=7lk_tFkkTT8', thumb: 'public/images/Tango.jpg' },
-  guitar2:    { title: 'S.L. Weiss - Fantasie',                        desc: 'Practice Session recording',                                        video: 'https://www.youtube.com/watch?v=kU4sPPl3LBw', thumb: 'public/images/Weiss.jpg' },
-  guitar3:    { title: 'Isaac Albéniz - Leyenda',                      desc: 'Live performance at Komarovi Campus School - solo guitar concert.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
+  guitar2:    { title: 'Isaac Albéniz - Leyenda',                      desc: 'Live performance at Komarovi Campus School - solo guitar concert.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
+  guitar3:    { title: 'S.L. Weiss - Fantasie',                        desc: 'Practice Session recording',                                        video: 'https://www.youtube.com/watch?v=kU4sPPl3LBw', thumb: 'public/images/Weiss.jpg' },
   guitar4:    { title: 'Villa-Lobos - Prelude No.5',                   desc: 'Practice Session recording.',                                                 video: 'https://www.youtube.com/shorts/Kz5SFcbbPcs', thumb: 'public/images/GuitarPoster.jpg' },
 };
 
