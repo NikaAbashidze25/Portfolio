@@ -214,13 +214,15 @@ function playTrack(idx) {
 
   // Wait until enough data is loaded before playing
   audio.load();
-  audio.oncanplaythrough = () => {
-    audio.oncanplaythrough = null; // remove listener after first fire
-    audio.play().then(() => {
-      isPlaying = true;
-      updatePlayerUI();
-    });
-  };
+  audio.oncanplay = () => {
+    audio.oncanplay = null;
+    setTimeout(() => {
+      audio.play().then(() => {
+        isPlaying = true;
+        updatePlayerUI();
+      });
+    }, 150); // small buffer before playing
+};
 }
 
 function togglePlay() {
