@@ -241,14 +241,14 @@ function updatePlayerUI() {
   document.getElementById('miniMeta').textContent = tracks[currentTrack].meta;
   document.getElementById('miniPlayer').classList.add('visible');
   document.getElementById('playPauseIcon').innerHTML = isPlaying
-    ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
+    ? '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>'
     : '<polygon points="5,3 19,12 5,21"/>';
   document.querySelectorAll('.track').forEach((el, i) => {
     el.classList.toggle('playing', i === currentTrack);
     const icon = document.getElementById(`track-icon-${i}`);
     if (!icon) return;
     if (i === currentTrack && isPlaying) {
-      icon.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+      icon.innerHTML = '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>';
     } else {
       icon.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
     }

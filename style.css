@@ -494,7 +494,7 @@ h2 .light { font-weight: 200; color: var(--accent); }
   border-color: var(--accent);
   transform: scale(1.1);
 }
-.track-play svg { fill: var(--text); width: 11px; height: 11px; }
+.track-play svg { fill: var(--text); width: 14px; height: 14px; }
 
 /* ── MINI PLAYER ── */
 .mini-player {
