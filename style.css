@@ -534,6 +534,15 @@ h2 .light { font-weight: 200; color: var(--accent); }
 .mini-btn:hover { color: var(--accent); transform: scale(1.15); }
 .mini-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+  transform-origin: center;
+}
+
 /* ── CONTACT ── */
 .contact-grid {
   display: grid; grid-template-columns: 1fr 1fr;
