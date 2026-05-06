@@ -180,11 +180,11 @@ document.addEventListener('keydown', e => {
 // ── AUDIO PLAYER ─────────────────────────────
 // ↓ Add your MP3 file paths in the src: '' fields below ↓
 const tracks = [
-  { name: 'Game Music | Peaceful | Adventure | Exploring  ',                             meta: '',              src: 'public/audio/NewPlugins4.wav' },
+  { name: 'Game Music | Peaceful | Adventure | Exploring  ',                             meta: '',              src: 'public/audio/NewPlugins4.mp3' },
   { name: 'Game Music | Adventure | Georgian Folk | Jazzy  ',    meta: 'Original Music for Game "Goat Ate The Vineyard"',                  src: 'public/audio/GoatAteVineyard.mp3' },
   { name: 'Electronic | Orchestral | Tron Feel',               meta: '',              src: 'public/audio/Tron Alike Portfolio.mp3' },
-  { name: 'Orchestral | Cinematic | Combat',                      meta: '',              src: 'public/audio/OrchestralTest_V1.wav' },
-  { name: 'Electronic  | Action | Motivational',                meta: 'Electro sliding Bass',              src: 'public/audio/ElectroBass_V1.wav' },
+  { name: 'Orchestral | Cinematic | Combat',                      meta: '',              src: 'public/audio/OrchestralTest_V1.mp3' },
+  { name: 'Electronic  | Action | Motivational',                meta: 'Electro sliding Bass',              src: 'public/audio/ElectroBass_V1.mp3' },
   { name: 'Synth | Drums | Cellos ',                 meta: '',              src: 'public/audio/Drums(Electro).mp3' },
 ];
 
