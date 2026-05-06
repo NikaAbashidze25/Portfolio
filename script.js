@@ -72,6 +72,12 @@ function getYouTubeId(url) {
 }
 
 function openModal(id) {
+
+    if (isPlaying) {
+    audio.pause();
+    isPlaying = false;
+    updatePlayerUI();
+  }
   const d = modalData[id];
   if (!d) return;
 
@@ -239,6 +245,13 @@ function updatePlayerUI() {
     : '<polygon points="5,3 19,12 5,21"/>';
   document.querySelectorAll('.track').forEach((el, i) => {
     el.classList.toggle('playing', i === currentTrack);
+    const icon = document.getElementById(`track-icon-${i}`);
+    if (!icon) return;
+    if (i === currentTrack && isPlaying) {
+      icon.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+    } else {
+      icon.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+    }
   });
 }
 function closePlayer() {
@@ -247,7 +260,11 @@ function closePlayer() {
   currentTrack = -1;
   document.getElementById('miniPlayer').classList.remove('visible');
   document.getElementById('progressFill').style.width = '0%';
-  document.querySelectorAll('.track').forEach(el => el.classList.remove('playing'));
+  document.querySelectorAll('.track').forEach((el, i) => {
+    el.classList.remove('playing');
+    const icon = document.getElementById(`track-icon-${i}`);
+    if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+  });
 }
 // I use this function to render the track list dynamically from the tracks array, so you can easily add/remove tracks without changing HTML
 // Just make sure to add your track info and file path in the tracks array above, and it will show up in the list automatically
@@ -257,15 +274,23 @@ function renderTrackList() {
   tracks.forEach((t, i) => {
     if (!t.name || t.name === 'Your Track Title Here') return;
     list.innerHTML += `
-      <div class="track" id="track-${i}" onclick="playTrack(${i})">
+      <div class="track" id="track-${i}" onclick="handleTrackClick(${i})">
         <span class="track-num">0${i + 1}</span>
         <div class="track-info">
           <div class="track-name">${t.name}</div>
           <div class="track-meta">${t.meta}</div>
         </div>
-        <div class="track-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="track-play" id="track-icon-${i}"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </div>`;
   });
+}
+
+function handleTrackClick(i) {
+  if (currentTrack === i) {
+    togglePlay(); // same track: pause/resume
+  } else {
+    playTrack(i); // new track: start playing
+  }
 }
 
 // ── CONTACT FORM ─────────────────────────────

@@ -396,7 +396,7 @@ h2 .light { font-weight: 200; color: var(--accent); }
   position: absolute; inset: 0;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.4) 50%, transparent 80%);
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.35s ease, transform 0.35s ease;
