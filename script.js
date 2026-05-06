@@ -205,9 +205,17 @@ function playTrack(idx) {
   if (!tracks[idx].src) return;
   currentTrack = idx;
   audio.src = tracks[idx].src;
-  audio.play();
-  isPlaying = true;
+  isPlaying = false;
   updatePlayerUI();
+
+  // Show spinner while buffering
+  const icon = document.getElementById(`track-icon-${idx}`);
+  if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24" class="spin"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40" stroke-dashoffset="15"/></svg>';
+
+  audio.play().then(() => {
+    isPlaying = true;
+    updatePlayerUI();
+  });
 }
 
 function togglePlay() {
