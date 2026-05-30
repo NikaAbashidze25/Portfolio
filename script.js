@@ -47,6 +47,7 @@ const modalData = {
   animation2: { title: 'Dumbots - Jump Shoes',                         desc: 'Focused only on Sound Design/Foley to synchronize movement sounds.',                                          video: 'https://www.youtube.com/watch?v=BHmFQ96LtMY', thumb: '' },
   animation3: { title: 'Audio Post Production #2 - Short Animation',   desc: 'Sound design · Original Music',                                    video: 'https://www.youtube.com/shorts/wjtb69nZfTM',   thumb: 'public/images/Bird.png', volume: 50 },
   animation4: { title: 'Lego Animation - Personal Project', desc: 'Focused on Sound design (planning to do the rescore of Star Wars music in the future)', video: 'public/videos/LevanAnimation3.mp4', thumb: 'public/images/LevanAnimation3V1.png' },
+  animation5: { title: 'Komble VS Aliens (Animatic)', desc: 'Worked on Original Music and Sound Design For Animatic - "Komble VS Aliens"', video: 'https://www.youtube.com/watch?v=vEnvPwGaqgY', thumb: '' },
   game1:      { title: 'LIFE - GDG Kutaisi Hackathon 2025 (Winner Project)',            desc: 'Educational Game - "Learning Is For Everyone". UE5 | Sound Design | Video Editing | Original Music (Note: Original Music was written for the Game, Music in the video was not composed by me).', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
   game2:      { title: 'Global Game Jam 2026 ',                         desc: 'Game on theme "Mask" - "The Goat Ate The vineyard". UE5 | Sound Design | Original Music ',     video: 'https://youtu.be/FeM80mWhXqs',      thumb: 'public/images/GoatAteVineyard.png' },
   guitar1:    { title: 'Tango En Skai - Roland Dyens',                 desc: 'Live performance at Komarovi Campus School - solo guitar concert.',            video: 'https://www.youtube.com/watch?v=7lk_tFkkTT8', thumb: 'public/images/Tango.jpg' },
@@ -208,21 +209,13 @@ function playTrack(idx) {
   isPlaying = false;
   updatePlayerUI();
 
-  // Show spinner while buffering
   const icon = document.getElementById(`track-icon-${idx}`);
   if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24" class="spin"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40" stroke-dashoffset="15"/></svg>';
 
-  // Wait until enough data is loaded before playing
-  audio.load();
-  audio.oncanplay = () => {
-    audio.oncanplay = null;
-    setTimeout(() => {
-      audio.play().then(() => {
-        isPlaying = true;
-        updatePlayerUI();
-      });
-    }, 150); // small buffer before playing
-};
+  audio.play().then(() => {
+    isPlaying = true;
+    updatePlayerUI();
+  });
 }
 
 function togglePlay() {
