@@ -54,6 +54,7 @@ const modalData = {
   guitar2:    { title: 'Isaac Albéniz - Leyenda',                      desc: 'Live performance at Komarovi Campus School - solo guitar concert.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
   guitar3:    { title: 'S.L. Weiss - Fantasie',                        desc: 'Practice Session recording',                                        video: 'https://www.youtube.com/watch?v=kU4sPPl3LBw', thumb: 'public/images/Weiss.jpg' },
   guitar4:    { title: 'Villa-Lobos - Prelude No.5',                   desc: 'Practice Session recording.',                                                 video: 'https://www.youtube.com/shorts/Kz5SFcbbPcs', thumb: 'public/images/GuitarPoster.jpg' },
+  guitar5:    { title: 'Yamandu Costa - Samba Pro Rapha (Cover)',      desc: 'Cover on Electric Guitar',                                                 video: 'https://www.youtube.com/shorts/WUnOpix9MeA', thumb: 'public/images/SambaProRapha3.png' },
 };
 
 // Helper: extract YouTube video ID from any YouTube URL
