@@ -67,7 +67,7 @@ musicians to gain further experience and skills in interactive sound design and 
 
     <div class="stat">
       <span class="stat-num">3+</span>
-      <span class="stat-label">Sound Design | Music Creation For Games and Animations</span>
+      <span class="stat-label">Years of Sound Design & Music Creation For Games and Animations</span>
     </div>
 
     <div class="stat">
@@ -126,18 +126,6 @@ musicians to gain further experience and skills in interactive sound design and 
         </div>
       </div>
 
-
-      <div class="card" data-category="animation" onclick="openModal('animation2')">
-        <div class="card-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <div class="card-overlay">
-          <span class="card-category">Animation</span>
-          <div class="card-title">Dumbots - Jump Shoes</div>
-          <div class="card-desc">Sound Design · Synced movement</div>
-        </div>
-      </div>
-
       
       <div class="card" data-category="animation" onclick="openModal('animation3')">
         <div class="card-placeholder">
@@ -162,14 +150,14 @@ musicians to gain further experience and skills in interactive sound design and 
           <div class="card-desc">Sound Design </div>
         </div>
       </div>
-        
+
       <div class="card" data-category="game" onclick="openModal('game1')">
         <div class="card-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h2"/></svg>
         </div>
         <div class="card-overlay">
           <span class="card-category">Game Audio</span>
-          <div class="card-title">LIFE — GDG Hackathon Winner</div>
+          <div class="card-title">LIFE - GDG Hackathon Winner</div>
           <div class="card-desc">Game Audio Design · Video Editing</div>
         </div>
       </div>
@@ -214,7 +202,7 @@ musicians to gain further experience and skills in interactive sound design and 
         <div class="card-overlay">
           <span class="card-category">Guitar</span>
           <div class="card-title">S.L. Weiss - Fantasie</div>
-          <div class="card-desc">Classical repertoire</div>
+          <div class="card-desc">Classical Repertoire</div>
         </div>
       </div>
 
@@ -237,12 +225,28 @@ musicians to gain further experience and skills in interactive sound design and 
         <div class="card-overlay">
           <span class="card-category">Guitar</span>
           <div class="card-title">Yamandu Costa - Samba Pro Rapha</div>
-          <div class="card-desc">Classical Guitar Cover</div>
+          <div class="card-desc">Electric Guitar Cover</div>
           </div>
         </div>
       </div>
 
     </div>
+
+      <div class="playlist-section reveal">
+        <span class="playlist-badge">Featured</span>
+        <h3 class="playlist-title">Sound Redesigns <span class="light">AAC 2026</span></h3>
+        <div class="playlist-embed">
+          <iframe
+            src="https://www.youtube.com/embed/videoseries?list=PLDDEhQzfQcBk"
+            title="Sound Redesigns AAC 2026 — YouTube playlist"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+      
   </div>
 </div>
 
@@ -276,10 +280,22 @@ musicians to gain further experience and skills in interactive sound design and 
     <div class="mini-track-name-text" id="miniName">—</div>
     <div class="mini-track-meta-text" id="miniMeta">—</div>
   </div>
+
   <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
     <div class="progress-fill" id="progressFill"></div>
   </div>
-  
+
+  <div class="volume-control">
+  <button class="volume-btn" id="volumeBtn" onclick="toggleMute()" aria-label="Mute">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="volume-icon" id="volumeIcon">
+      <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+      <path d="M16 8c2 1.5 2 6.5 0 8M18.5 6c3 2.5 3 9.5 0 12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </svg>
+  </button>
+  <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)" />
+</div>
+
+
   <button class="mini-btn" onclick="closePlayer()" title="Close">
   <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
     <line x1="18" y1="6" x2="6" y2="18"/>
@@ -348,9 +364,11 @@ musicians to gain further experience and skills in interactive sound design and 
 <footer>
   <p>© 2025 Nika Abashidze</p>
   <p>Sound Designer · Composer · Guitarist</p>
+
   <a href="https://www.youtube.com/@NikaAbashidzeGuitar" target="_blank" rel="noopener" class="footer-youtube" aria-label="YouTube channel">
-  <svg>...</svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5V8.5L15.8 12Z"/></svg>
   </a>
+  
 </footer>
 
 <script src="script.js"></script>

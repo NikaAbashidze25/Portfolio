@@ -44,11 +44,10 @@ function filterCards(cat, btn) {
 // ↓ Paste your YouTube links in the video: '' fields below ↓
 const modalData = {
   animation1: { title: 'Audio Post Production #1 - Animation',        desc: 'Sound Design · Original Music · Mixing',                                         video: 'https://www.youtube.com/watch?v=kW0Paxotqyo' , thumb: ''},
-  animation2: { title: 'Dumbots - Jump Shoes',                         desc: 'Focused only on Sound Design/Foley to synchronize movement sounds.',                                          video: 'https://www.youtube.com/watch?v=BHmFQ96LtMY', thumb: '' },
   animation3: { title: 'Audio Post Production #2 - Short Animation',   desc: 'Sound design · Original Music',                                    video: 'https://www.youtube.com/shorts/wjtb69nZfTM',   thumb: 'public/images/Bird.png', volume: 50 },
   animation4: { title: 'Lego Animation - Personal Project', desc: 'Focused on Sound design (planning to do the rescore of Star Wars music in the future)', video: 'public/videos/LevanAnimation3.mp4', thumb: 'public/images/LevanAnimation3V1.png' },
   animation5: { title: 'Komble VS Aliens (Animatic)', desc: 'Worked on Original Music and Sound Design For Animatic - "Komble VS Aliens"', video: 'https://www.youtube.com/watch?v=vEnvPwGaqgY', thumb: '' },
-  game1:      { title: 'LIFE - GDG Kutaisi Hackathon 2025 (Winner Project)',            desc: 'Educational Game - "Learning Is For Everyone". UE5 | Sound Design | Video Editing | Original Music (Note: Original Music was written for the Game, Music in the video was not composed by me).', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
+  game1: { title: 'LIFE - GDG Kutaisi Hackathon 2025 (Winner Project)', desc: 'Educational Game - "Learning Is For Everyone". UE5 | Sound Design | Video Editing | Original Music | Voiceover. <br><br><a href="https://theggestking.github.io/Hackathon/" target="_blank" rel="noopener" class="modal-link">Try the demo version and explore more details on our website →</a>', video: 'https://youtu.be/kizOK2RtQkA', thumb: 'public/images/LIFE.png' },
   game2:      { title: 'Global Game Jam 2026 ',                         desc: 'Game on theme "Mask" - "The Goat Ate The vineyard". UE5 | Sound Design | Original Music ',     video: 'https://youtu.be/FeM80mWhXqs',      thumb: 'public/images/GoatAteVineyard.png' },
   guitar1:    { title: 'Tango En Skai - Roland Dyens',                 desc: 'Live performance at Komarovi Campus School - solo guitar concert.',            video: 'https://www.youtube.com/watch?v=7lk_tFkkTT8', thumb: 'public/images/Tango.jpg' },
   guitar2:    { title: 'Isaac Albéniz - Leyenda',                      desc: 'Live performance at Komarovi Campus School - solo guitar concert.',                              video: 'https://www.youtube.com/watch?v=v0rwCozHIk8', thumb: 'public/images/Leyenda.png' },
@@ -243,6 +242,51 @@ function seekAudio(e) {
   if (!audio.duration) return;
   const r = e.currentTarget.getBoundingClientRect();
   audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+}
+
+let previousVolume = 1;
+let isMuted = false;
+
+function setVolume(val) {
+  audio.volume = val;
+  isMuted = parseFloat(val) === 0;
+  updateVolumeIcon(val);
+}
+
+function toggleMute() {
+  const slider = document.getElementById('volumeSlider');
+
+  if (isMuted) {
+    audio.volume = previousVolume;
+    slider.value = previousVolume;
+    isMuted = false;
+  } else {
+    previousVolume = audio.volume > 0 ? audio.volume : previousVolume;
+    audio.volume = 0;
+    slider.value = 0;
+    isMuted = true;
+  }
+  updateVolumeIcon(slider.value);
+  animateVolumeIcon();
+}
+
+function updateVolumeIcon(val) {
+  const icon = document.getElementById('volumeIcon');
+  const v = parseFloat(val);
+  if (v === 0) {
+    icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="16" y1="9" x2="21" y2="15" stroke="currentColor" stroke-width="1.5"/><line x1="21" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="1.5"/>';
+  } else if (v < 0.5) {
+    icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9c1 1 1 5 0 6" stroke="currentColor" stroke-width="1.5" fill="none"/>';
+  } else {
+    icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8c2 1.5 2 6.5 0 8M18.5 6c3 2.5 3 9.5 0 12" stroke="currentColor" stroke-width="1.5" fill="none"/>';
+  }
+}
+
+function animateVolumeIcon() {
+  const icon = document.getElementById('volumeIcon');
+  icon.classList.remove('pulse');
+  void icon.offsetWidth; // restart animation
+  icon.classList.add('pulse');
 }
 
 function updatePlayerUI() {
